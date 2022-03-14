@@ -14,10 +14,6 @@ namespace ASPNetForAndroid092021
 
 
 
-
-        
-        
-
         public string[] Get_Id(string s_Id)
         {
             var isNumeric = System.Text.RegularExpressions.Regex.IsMatch(s_Id, @"^\d+$");
@@ -118,27 +114,7 @@ namespace ASPNetForAndroid092021
                 "LEFT JOIN[dbo].[CENA_ARTYKULU] AS cW ON cW.ID_ARTYKULU = a.ID_ARTYKULU and cW.ID_CENY = @CENA_W " +
                 "where a.ID_MAGAZYNU =  @s1 and a.ID_Artykulu = @ID_ARTYKULU " +
                 "END";
-             //else if(tempArray[2] == "171")
-
-             //   s_Operation = "IF EXISTS ( SELECT TOP 1 zdjecie from [dbo].[ARTYKUL_BLOB] WHERE INDEKS_KATALOGOWY = @INDEKS_KATALOGOWY) " +
-             //   "BEGIN " +
-             //   "SELECT TOP 1 cA.CENA_BRUTTO as CENA_BRUTTO, cW.CENA_BRUTTO as CenaW, a.ID_ARTYKULU, a.LOKALIZACJA, a.INDEKS_KATALOGOWY, a.NAZWA,  a.STAN, a.ZAREZERWOWANO, a.KOD_KRESKOWY, " +
-             //   " a.[POLE1], x.ZDJECIE " +
-             //   "FROM [dbo].[ARTYKUL]  AS a " +
-             //   "LEFT JOIN[dbo].[CENA_ARTYKULU] AS cA ON cA.ID_ARTYKULU = a.ID_ARTYKULU and cA.ID_CENY = @CENA_A " +
-             //   "LEFT JOIN[dbo].[CENA_ARTYKULU] AS cW ON cW.ID_ARTYKULU = a.ID_ARTYKULU and cW.ID_CENY = @CENA_W " +
-             //   "INNER JOIN [dbo].[ARTYKUL_BLOB] AS x ON  x.INDEKS_KATALOGOWY = a.INDEKS_KATALOGOWY " +
-             //   "where a.ID_MAGAZYNU =  @s1 and a.ID_Artykulu = @ID_ARTYKULU " +
-             //   "END " +
-             //   "else " +
-             //   "BEGIN " +
-             //   "SELECT TOP 1 cA.CENA_BRUTTO as CENA_BRUTTO, cW.CENA_BRUTTO as CenaW,  a.ID_ARTYKULU, a.LOKALIZACJA, a.INDEKS_KATALOGOWY, a.NAZWA,  a.STAN, a.ZAREZERWOWANO, a.KOD_KRESKOWY, " +
-             //   " a.[POLE1] " +
-             //   "FROM [dbo].[ARTYKUL]  AS a " +
-             //   "LEFT JOIN[dbo].[CENA_ARTYKULU] AS cA ON cA.ID_ARTYKULU = a.ID_ARTYKULU and cA.ID_CENY = @CENA_A " +
-             //   "LEFT JOIN[dbo].[CENA_ARTYKULU] AS cW ON cW.ID_ARTYKULU = a.ID_ARTYKULU and cW.ID_CENY = @CENA_W " +
-             //   "where a.ID_MAGAZYNU =  @s1 and a.ID_Artykulu = @ID_ARTYKULU " +
-             //   "END";
+      
 
 
 
@@ -188,55 +164,16 @@ namespace ASPNetForAndroid092021
                     foreach (DataRow dataRow in data.Select())
                     {
 
-
-
-                        //tablica[0] = result[0]["ID_ARTYKULU"].ToString();
-                        //tablica[1] = result[0]["NAZWA"].ToString();
-                        //tablica[2] = Convert.ToInt64(result[0]["STAN"]) + "";
-                        if (columns.Contains("STAN")) dataRow["STAN"] = Convert.ToInt64(dataRow["STAN"]) + "";
-                        //tablica[9] = Convert.ToInt64(result[0]["ZAREZERWOWANO"]) + "";
-                        if (columns.Contains("ZAREZERWOWANO")) dataRow["ZAREZERWOWANO"] = Convert.ToInt64(dataRow["ZAREZERWOWANO"]) + "";
-                        //tablica[3] = result[0]["INDEKS_KATALOGOWY"].ToString();
-                        //tablica[4] = result[0]["KOD_KRESKOWY"].ToString();
-                        //tablica[5] = result[0]["LOKALIZACJA"].ToString();
-                        //tablica[6] = result[0]["POLE1"].ToString();
-                        //tablica[8] = Math.Round((decimal)result[0]["CENA_BRUTTO"], 1, MidpointRounding.AwayFromZero).ToString("0.00");
+                        if (columns.Contains("STAN")) dataRow["STAN"] = Convert.ToInt64(dataRow["STAN"]) + "";               
+                        if (columns.Contains("ZAREZERWOWANO")) dataRow["ZAREZERWOWANO"] = Convert.ToInt64(dataRow["ZAREZERWOWANO"]) + "";  
                         if (columns.Contains("CENA_BRUTTO")) dataRow["CENA_BRUTTO"] = Math.Round((decimal)dataRow["CENA_BRUTTO"], 1, MidpointRounding.AwayFromZero).ToString("0.00");
-                    if (dataRow["CenaW"] != DBNull.Value)
+                        if (dataRow["CenaW"] != DBNull.Value)
                          dataRow["CenaW"] = Math.Round((decimal)dataRow["CenaW"], 1, MidpointRounding.AwayFromZero).ToString("0.00");
                  
 
 
                 }
-                    //// if (columns.Contains("PROMOCJA_OD"))
-                    //   if (dataRow["PROMOCJA_OD"] != DBNull.Value)
                     
-                            //tablica[11] = dataRow["PROMOCJA_OD"].ToString();
-                            //tablica[12] = dataRow["PROMOCJA_DO"].ToString();
-                            //tablica[13] = dataRow["CENA_PROMOCJI_B"].ToString();
-                            //tablica[14] = dataRow["Column1"].ToString();
-
-                            //if (int.Parse(dataRow["Column1"].ToString()) >= int.Parse(dataRow["PROMOCJA_OD"].ToString()) & int.Parse(dataRow["Column1"].ToString()) <= int.Parse(dataRow["PROMOCJA_DO"].ToString()))
-                            //   dataRow["Column1"] = "true";
-                            // else
-                            // dataRow["Column1"] = "false";
-                            //}
-
-
-
-
-                           // if (columns.Contains("ZDJECIE"))
-                            //{
-
-                            //    if (dataRow["ZDJECIE"] != DBNull.Value)
-                            //    {
-                            //        //byte[] Img = (byte[])dataRow["ZDJECIE"];
-                            //        //tablica[10] = Convert.ToBase64String(Img);
-                            //        // dataRow["ZDJECIE"] = Convert.ToBase64String(Img);
-                            //    }
-
-
-                            //}
 
                         
                     
@@ -287,7 +224,7 @@ namespace ASPNetForAndroid092021
                     command.CommandType = CommandType.Text;
                     //if (idOrCatalog)
                     if(s_Ean != "niema")
-                    command.CommandText = "UPDATE[dbo].[ARTYKUL]  SET [LOKALIZACJA] = @staffName, KOD_KRESKOWY = @KOD_KRESKOWY  where ID_MAGAZYNU = @staffMag and ID_ARTYKULU = @staffID";
+                    command.CommandText = "UPDATE[dbo].[ARTYKUL]  SET [LOKALIZACJA] = @staffName, KOD_KRESKOWY = @EAN  where ID_MAGAZYNU = @staffMag and ID_ARTYKULU = @staffID";
                     else
                         command.CommandText = "UPDATE[dbo].[ARTYKUL]  SET [LOKALIZACJA] = @staffName  where ID_MAGAZYNU = @staffMag and ID_ARTYKULU = @staffID";
                     //command.CommandText = "UPDATE[dbo].[ARTYKUL]  SET[LOKALIZACJA] = @staffName where ID_MAGAZYNU = @staffMag and INDEKS_KATALOGOWY = @staffID";
@@ -311,7 +248,7 @@ namespace ASPNetForAndroid092021
                     }
                     command.Parameters.AddWithValue("@staffName", s_Location);
                     command.Parameters.AddWithValue("@staffMag", "1");
-                    command.Parameters.AddWithValue("@KOD_KRESKOWY", s_Ean);
+                    command.Parameters.AddWithValue("@EAN", s_Ean);
 
                     sQLconnection.Open();
                    
@@ -321,12 +258,12 @@ namespace ASPNetForAndroid092021
                     if (a == 1)
                         return "lokalizacja zmieniona";
                     else
-                        return "Błąd, dla Pawła !!!";
+                        return "Error for Pawel";
                 }
             }
             catch (SqlException ex)
             {
-                return "Błąd, dla Pawła";
+                return "Error for Pawel";
             }
             finally
             {

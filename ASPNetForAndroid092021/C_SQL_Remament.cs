@@ -27,35 +27,26 @@ namespace ASPNetForAndroid092021
                 string s_OperationImage = null;
 
 
-
-                    s_OperationImage = "IF EXISTS ( " +
-                        "SELECT ILOSC " +
-                        "FROM  [dbo].[__REMAMENT_KONIEC] " +
-                        "where KOD_KRESKOWY = @s3 " +
-                        "UNION ALL " +
-                        "ILOSC " +
-                        "FROM [dbo].[__DODAJ_REMAMENT] " +
-                        "WHERE KOD_KRESKOWY = @s3 " +
-                        ") " +
-                       "BEGIN " +
-                              "SELECT top 1 INDEKS_KATALOGOWY, Id_artykulu, 'true' as 'CHECK' " +
-                                "FROM  [dbo].[ARTYKUL]  " +
-                                "where ID_MAGAZYNU =  @s1 and KOD_KRESKOWY = @s3 " +
-                        "END " +
-                         "else " +
-                        "BEGIN " +
-                         "SELECT top 1 INDEKS_KATALOGOWY, Id_artykulu, 'false' as 'CHECK' " +
-                                "FROM  [dbo].[ARTYKUL]  " +
-                                "where ID_MAGAZYNU =  @s1 and KOD_KRESKOWY = @s3 " +
-                        "END ";
-
-
-
-
-
-
-
-
+                    s_OperationImage =  "IF EXISTS ( " +
+                                        "SELECT ILOSC " +
+                                        "FROM  [dbo].[__REMAMENT_KONIEC] " +
+                                        "where KOD_KRESKOWY = @s3 " +
+                                        "UNION ALL " +
+                                        "ILOSC " +
+                                        "FROM [dbo].[__DODAJ_REMAMENT] " +
+                                        "WHERE KOD_KRESKOWY = @s3 " +
+                                        ") " +
+                                        "BEGIN " +
+                                        "SELECT top 1 INDEKS_KATALOGOWY, Id_artykulu, 'true' as 'CHECK' " +
+                                        "FROM  [dbo].[ARTYKUL]  " +
+                                        "where ID_MAGAZYNU =  @s1 and KOD_KRESKOWY = @s3 " +
+                                        "END " +
+                                        "else " +
+                                        "BEGIN " +
+                                        "SELECT top 1 INDEKS_KATALOGOWY, Id_artykulu, 'false' as 'CHECK' " +
+                                        "FROM  [dbo].[ARTYKUL]  " +
+                                        "where ID_MAGAZYNU =  @s1 and KOD_KRESKOWY = @s3 " +
+                                        "END ";
 
 
                 try
@@ -134,14 +125,11 @@ namespace ASPNetForAndroid092021
                     sQLconnection.Open();
                     SqlCommand cmd1 = new SqlCommand(s_Operation, sQLconnection);
 
-
-
-
                     cmd1.Parameters.AddWithValue("@s1", "1");
                     cmd1.Parameters.AddWithValue("@CENA_A", "4");
                     cmd1.Parameters.AddWithValue("@CENA_W", "11");
                      cmd1.Parameters.AddWithValue("@CHECK", tempArray[2]);
-                cmd1.Parameters.AddWithValue("@ID_ARTYKULU", tempArray[0]);
+                    cmd1.Parameters.AddWithValue("@ID_ARTYKULU", tempArray[0]);
                     cmd1.Parameters.AddWithValue("@INDEKS_KATALOGOWY", tempArray[1]);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd1);
 
@@ -155,8 +143,6 @@ namespace ASPNetForAndroid092021
 
                     if (data.Rows.Count == 0)
                     {
-
-
                         throw new Exception();
                     }
 

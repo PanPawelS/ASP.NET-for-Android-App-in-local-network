@@ -52,33 +52,7 @@ namespace ASPNetForAndroid092021.Controllers
             }
         }
 
-        //[System.Web.Http.HttpGet]
-        //public HttpResponseMessage GetImage(string moduleId)
-        //{
-        //    try
-        //    {
-        //        C_Image_Get c_Image_Get = new C_Image_Get();
-
-        //       // response.Content = new StreamContent(c_Image_Get.M_Get_Image(moduleId));
-
-        //        byte[] imgData = c_Image_Get.M_Get_Image(moduleId);
-        //        MemoryStream ms = new MemoryStream(imgData);
-        //        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-        //        response.Content = new StreamContent(ms);
-        //        response.Content.Headers.ContentType = new
-        //        System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
-
-
-        //        return response;
-
-
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        return new HttpResponseMessage(System.Net.HttpStatusCode.BadGateway);
-        //    }
-        //}
+ 
 
         [System.Web.Http.HttpGet]
         [Route("api/product/put/{moduleId}/{lokalizacja}/{ean}")]
